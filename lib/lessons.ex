@@ -1,6 +1,6 @@
 defmodule Lessons do
   @spec run() :: :world
   def run do
-    :world
+    Lessons.Enum.run()
   end
 end

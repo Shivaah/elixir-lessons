@@ -1,4 +1,3 @@
-
 defmodule Lessons.MixProject do
   use Mix.Project
 
@@ -9,7 +8,7 @@ defmodule Lessons.MixProject do
       elixir: "~> 1.16",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      default_task: "run"
+      default_task: "default"
     ]
   end
 
