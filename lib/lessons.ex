@@ -1,6 +1,7 @@
 defmodule Lessons do
-  @spec run() :: :world
+  @spec run() :: any()
   def run do
     Lessons.Enum.run()
+    Lessons.ControlStructures.run()
   end
 end
