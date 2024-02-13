@@ -1,4 +1,5 @@
 defmodule Lessons.ControlStructures do
+  require Integer
   @spec run() :: any()
   def run do
     IO.inspect([
@@ -6,7 +7,8 @@ defmodule Lessons.ControlStructures do
       unless(),
       case(),
       pin(),
-      with()
+      with(),
+      with_error()
     ])
   end
 
@@ -62,5 +64,24 @@ defmodule Lessons.ControlStructures do
     with {:ok, name} <- Map.fetch(user, :name),
          {:ok, age} <- Map.fetch(user, :age),
          do: "Hello #{name}, you are #{age} years old !"
+  end
+
+  @spec with_error() :: :error | :even | :odd
+  def with_error do
+    m = %{a: 2, c: 3}
+
+    with {:ok, number} <- Map.fetch(m, :c),
+         true <- Integer.is_even(number) do
+      IO.puts("#{number} divided by 2 is #{div(number, 2)}")
+      :even
+    else
+      :error ->
+        IO.puts("We don't have this item in map")
+        :error
+
+      _ ->
+        IO.puts("It is odd")
+        :odd
+    end
   end
 end
