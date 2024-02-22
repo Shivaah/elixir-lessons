@@ -3,6 +3,7 @@ defmodule Lessons.ControlStructures do
   @spec run() :: any()
   def run do
     IO.inspect([
+      "CONTROL STRUCTURES CHAPTER",
       if(),
       unless(),
       case(),
@@ -40,7 +41,6 @@ defmodule Lessons.ControlStructures do
     end
   end
 
-  @spec pin() :: <<_::64, _::_*8>>
   @doc """
   If you intend to match against existing variables you must use the pin ^/1 operator
   """

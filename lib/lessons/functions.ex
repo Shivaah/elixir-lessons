@@ -1,16 +1,20 @@
 defmodule Lessons.Functions do
   alias Lessons.Functions.Length
   alias Lessons.Functions.Greeter
+  alias Lessons.Functions.Greeter2
 
   def run do
     IO.inspect([
+      "FUNCTIONS CHAPTER",
       ano(),
       ano_shortand(),
       pattern_matching(),
       Length.of([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
       match_argument(%{name: "Adrien", age: 14}),
       match_argument_order_switch(%{name: "Adrien", age: 14}),
-      Greeter.hello(["John", "Jack", "Tony"])
+      Greeter.hello(["John", "Jack", "Tony"]),
+      Greeter2.default_argument("Adrien"),
+      Greeter2.default_argument("Adrien", "es")
     ])
   end
 
@@ -80,5 +84,14 @@ defmodule Lessons.Functions do
     end
 
     def phrases, do: "Hello "
+  end
+
+  defmodule Greeter2 do
+    def default_argument(name, language_code \\ "en") do
+      phrase(language_code) <> name
+    end
+
+    def phrase("en"), do: "Hello, "
+    def phrase("es"), do: "Hola ,"
   end
 end
