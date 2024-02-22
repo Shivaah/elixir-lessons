@@ -5,12 +5,14 @@ defmodule Lessons.Modules do
 
   alias Lessons.Modules.Example
   alias Lessons.Modules.Attribute
+  alias Lessons.Modules.Using
 
-  def run do
+  def(run) do
     IO.inspect([
       "MODULE CHAPTER",
       Example.greeting("Adrien"),
-      Attribute.greeting("Adrien")
+      Attribute.greeting("Adrien"),
+      Using.hello("Sean")
     ])
   end
 
@@ -49,6 +51,20 @@ defmodule Lessons.Modules do
       %{name: name} = steeve
 
       name
+    end
+
+    defmodule Hello do
+      defmacro __using__(opts) do
+        greeting = Keyword.get(opts, :greeting, "Hi")
+
+        quote do
+          def hello(name), do: unquote(greeting) <> ", " <> name
+        end
+      end
+    end
+
+    defmodule Using do
+      use Hello, greeting: "Hello"
     end
   end
 end
